@@ -1,35 +1,25 @@
 package hw1.task3_4;
 
-import java.util.Arrays;
-
 public class Card implements Comparable<Card> {
-    private int rank;
-    private String suit;
-    private final String[] rankStrings = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack",
-            "Queen", "King", "Ace"};
-    private final String[] suitStrings = {"clubs", "diamonds", "spades", "hearts"};
+    private Rank rank;
+    private Suit suit;
 
-    public Card(int rank, String suit) {
+    public Card(Rank rank, Suit suit) {
         this.rank = rank;
-        if (!Arrays.asList(suitStrings).contains(suit)) {
-            System.out.println("Not standard suit");
-        }
         this.suit = suit;
     }
 
-    public int getRank() {
+    public Rank getRank() {
         return this.rank;
     }
 
-    public String getSuit() {
+    public Suit getSuit() {
         return this.suit;
     }
 
     @Override
     public String toString() {
-        if (rank >= 2 && rank <= 14) {
-            return rankStrings[rank - 2] + " " + suit;
-        } else return rank + " " + suit;
+        return rank + " " + suit;
     }
 
     @Override
@@ -43,15 +33,15 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int hashCode() {
-        return rank * 3 + suit.length() * 5;
+        return rank.getRankValue() * 3 + suit.toString().length() * 5;
     }
 
     public boolean isCardOfStandardDeck() {
-        return rank >= 2 && rank <= 14 && Arrays.asList(suitStrings).contains(suit);
+        return rank.getRankValue() >= 2 && rank.getRankValue() <= 14 && suit != null;
     }
 
     public boolean isStronger(Card card) {
-        return suit.equals(card.getSuit()) && rank > card.getRank();
+        return suit.equals(card.getSuit()) && rank.getRankValue() > card.getRank().getRankValue();
     }
 
     public static int compare(Card card1, Card card2) {
@@ -60,8 +50,8 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int compareTo(Card card) {
-        int suitWeight = Arrays.asList(suitStrings).indexOf(suit);
-        int otherSuitWeight = Arrays.asList(suitStrings).indexOf(card.getSuit());
+        int suitWeight = suit.getSuitValue();
+        int otherSuitWeight = card.getSuit().getSuitValue();
         if (equals(card)){
             return 0;
         } else if ((suitWeight == otherSuitWeight && !isStronger(card)) || (suitWeight < otherSuitWeight)){

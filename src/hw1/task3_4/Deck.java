@@ -7,11 +7,10 @@ public class Deck {
     private  ArrayList<Card> deck;
     private Deck() {
         deck = new ArrayList<>(52);
-        for (int i = 2; i < 15; i++) {
-            deck.add(new Card(i, "clubs"));
-            deck.add(new Card(i, "diamonds"));
-            deck.add(new Card(i, "spades"));
-            deck.add(new Card(i, "hearts"));
+        for (Rank rank : Rank.values()) {
+            for (Suit suit : Suit.values()){
+                deck.add(new Card(rank, suit));
+            }
         }
     }
 
