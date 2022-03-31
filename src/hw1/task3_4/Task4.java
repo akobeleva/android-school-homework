@@ -12,18 +12,18 @@ public class Task4 {
         deck.addCard(card3);
         deck.addCard(card2);
         deck.addCard(card2);
-        System.out.println(deck.toString());
+        System.out.println(deck);
 
         deck.shuffle();
-        System.out.println(deck.toString());
+        System.out.println(deck);
 
         deck.sort();
-        System.out.println(deck.toString());
+        System.out.println(deck);
 
         Card card = deck.getCard();
-        while (card != null){
+        while (card != null) {
             card = deck.getCard();
         }
-        System.out.println(deck.toString());
+        System.out.println(deck);
     }
 }

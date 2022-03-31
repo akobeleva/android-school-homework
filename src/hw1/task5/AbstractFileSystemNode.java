@@ -1,17 +1,17 @@
 package hw1.task5;
 
-public abstract class AbstractFileSystemNode implements FileSystemNode{
-    private String name;
-    private AbstractFileSystemNode parent;
+public abstract class AbstractFileSystemNode implements FileSystemNode {
+    private final String name;
+    private FileSystemNode parent;
 
-    public AbstractFileSystemNode(AbstractFileSystemNode parent, String name){
-        this.parent = parent;
+    public AbstractFileSystemNode(String name) {
+        this.parent = null;
         this.name = name;
     }
 
     @Override
     public void setParent(FileSystemNode parent) {
-        this.parent = (AbstractFileSystemNode) parent;
+        this.parent = parent;
     }
 
     @Override
@@ -26,11 +26,11 @@ public abstract class AbstractFileSystemNode implements FileSystemNode{
 
     @Override
     public final String getPath() {
-        AbstractFileSystemNode parent = (AbstractFileSystemNode) getParent();
+        FileSystemNode parent = getParent();
         StringBuilder sb = new StringBuilder();
         while (parent != null) {
             sb.insert(0, "/").insert(1, parent.getName());
-            parent = (AbstractFileSystemNode) parent.getParent();
+            parent = parent.getParent();
         }
         sb.append("/").append(getName());
         return new String(sb);

@@ -7,24 +7,21 @@ public class CardC {
     private static int maxRankClubs = 1;
     private static int maxRankHearts = 1;
     private static int maxRankSpades = 1;
+    private final int MIN_RANK = 2;
 
     public CardC(int rank, String suit) {
         switch (suit) {
             case "diamonds":
                 if (rank > maxRankDiamonds) maxRankDiamonds = rank;
-                this.suit = suit;
                 break;
             case "clubs":
                 if (rank > maxRankClubs) maxRankClubs = rank;
-                this.suit = suit;
                 break;
             case "hearts":
                 if (rank > maxRankHearts) maxRankHearts = rank;
-                this.suit = suit;
                 break;
             case "spades":
                 if (rank > maxRankSpades) maxRankSpades = rank;
-                this.suit = suit;
                 break;
             default:
                 System.out.println("Not standard suit");
@@ -39,26 +36,22 @@ public class CardC {
             case "diamonds":
                 rank = maxRankDiamonds + 1;
                 maxRankDiamonds++;
-                this.suit = suit;
                 break;
             case "clubs":
                 rank = maxRankClubs + 1;
                 maxRankClubs++;
-                this.suit = suit;
                 break;
             case "hearts":
                 rank = maxRankHearts + 1;
                 maxRankHearts++;
-                this.suit = suit;
                 break;
             case "spades":
                 rank = maxRankSpades + 1;
                 maxRankSpades++;
-                this.suit = suit;
                 break;
             default:
                 System.out.println("Not standard suit");
-                this.rank = 2;
+                this.rank = MIN_RANK;
                 break;
         }
         this.suit = suit;

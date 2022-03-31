@@ -5,11 +5,11 @@ public enum Suit {
 
     private final int suitValue;
 
-    Suit(int value){
+    Suit(int value) {
         suitValue = value;
     }
 
-    public int getSuitValue(){
+    public int getSuitValue() {
         return suitValue;
     }
 }

@@ -52,9 +52,9 @@ public class Card implements Comparable<Card> {
     public int compareTo(Card card) {
         int suitWeight = suit.getSuitValue();
         int otherSuitWeight = card.getSuit().getSuitValue();
-        if (equals(card)){
+        if (equals(card)) {
             return 0;
-        } else if ((suitWeight == otherSuitWeight && !isStronger(card)) || (suitWeight < otherSuitWeight)){
+        } else if ((suitWeight == otherSuitWeight && !isStronger(card)) || (suitWeight < otherSuitWeight)) {
             return -1;
         } else {
             return 1;

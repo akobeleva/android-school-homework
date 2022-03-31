@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-    private  ArrayList<Card> deck;
+    private ArrayList<Card> deck;
+
     private Deck() {
         deck = new ArrayList<>(52);
         for (Rank rank : Rank.values()) {
-            for (Suit suit : Suit.values()){
+            for (Suit suit : Suit.values()) {
                 deck.add(new Card(rank, suit));
             }
         }
@@ -25,21 +26,21 @@ public class Deck {
         return deck.deck.get(i);
     }
 
-    public void shuffle(){
+    public void shuffle() {
         Collections.shuffle(deck);
     }
 
-    public void sort(){
+    public void sort() {
         deck.sort(Card::compareTo);
     }
 
-    public Card getCard(){
+    public Card getCard() {
         if (!isEmpty()) {
             return deck.remove(0);
         } else return null;
     }
 
-    public void addCard(Card card){
+    public void addCard(Card card) {
         if (!deck.contains(card)) {
             deck.add(card);
         } else {
@@ -47,13 +48,13 @@ public class Deck {
         }
     }
 
-    public boolean isEmpty(){
-        return deck.size() == 0;
+    public boolean isEmpty() {
+        return deck.isEmpty();
     }
 
     @Override
     public String toString() {
-        if (!isEmpty()){
+        if (!isEmpty()) {
             StringBuilder sb = new StringBuilder();
             deck.forEach((card) -> sb.append(card.toString()).append(", "));
             return new String(sb);

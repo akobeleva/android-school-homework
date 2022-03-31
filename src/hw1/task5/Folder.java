@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class Folder extends BaseFileSystemNode {
-    private ArrayList<BaseFileSystemNode> children;
+public class Folder extends AbstractFileSystemNode {
+    private final ArrayList<FileSystemNode> children;
 
-    public Folder(BaseFileSystemNode parent, String name, BaseFileSystemNode ... children){
-        super(parent, name);
+    public Folder(String name, FileSystemNode... children) {
+        super(name);
         this.children = new ArrayList<>(children.length);
         Collections.addAll(this.children, children);
-        this.children.forEach((child)->child.setParent(this));
+        this.children.forEach((child) -> child.setParent(this));
     }
 
-    public ArrayList<BaseFileSystemNode> getChildren(){
+    public ArrayList<FileSystemNode> getChildren() {
         return children;
     }
 }

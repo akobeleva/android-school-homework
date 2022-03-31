@@ -2,7 +2,7 @@ package hw1.task2;
 
 public class Task2 {
     public static void main(String[] args) {
-        CardC card1 = new CardC( 10, "diamonds");
+        CardC card1 = new CardC(10, "diamonds");
         CardC card2 = new CardC("diamonds");
         System.out.println(card2.getRank());
 
